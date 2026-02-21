@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Wilson Law Firm — UK solicitors | full‑service practice</title>
+  <!-- Font Awesome 6 (free) + Google Font Inter -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f7fc;
+      color: #1e293b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #0b2a4a;        /* deep navy */
+      --accent: #b48c5c;         /* aged bronze */
+      --light: #f3efe9;
+      --gray-100: #f0f4fa;
+      --gray-600: #3f5468;
+      --white: #ffffff;
+      --shadow-sm: 0 8px 24px rgba(0, 20, 40, 0.08);
+      --shadow-md: 0 20px 35px -8px rgba(10, 40, 70, 0.2);
+      --gold-glow: 0 0 0 2px rgba(180, 140, 92, 0.3);
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* animations */
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateX(-25px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    .animate-fade { animation: fadeUp 0.8s ease; }
+    .animate-slide { animation: slideIn 0.6s ease; }
+
+    /* accessibility */
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--primary); color: white; padding: 0.6rem 1.2rem;
+      text-decoration: none; z-index: 200;
+    }
+    .skip-link:focus { top: 0; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    /* header / nav */
+    .navbar {
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 2px solid var(--accent);
+    }
+    .nav-container {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.7rem 0; flex-wrap: wrap;
+    }
+    .logo-area { display: flex; align-items: center; gap: 0.7rem; }
+    .logo-icon { font-size: 2.4rem; color: var(--primary); }
+    .logo-text { font-size: 1.9rem; font-weight: 400; color: var(--primary); }
+    .logo-text span { font-weight: 700; color: var(--accent); }
+    .uk-badge {
+      background: #eae3da; border-radius: 40px; padding: 0.2rem 1rem 0.2rem 0.6rem;
+      font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid var(--accent); margin-left: 1rem;
+    }
+    .nav-links { display: flex; gap: 2.2rem; font-weight: 500; }
+    .nav-links a {
+      text-decoration: none; color: var(--primary); border-bottom: 2px solid transparent;
+      padding-bottom: 4px; transition: 0.2s;
+    }
+    .nav-links a:hover, .nav-links a:focus { border-bottom-color: var(--accent); color: var(--accent); }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(120deg, #0b2a4a 0%, #1b3b5c 90%);
+      color: white; padding: 3rem 0 4rem;
+      border-bottom: 5px solid var(--accent);
+    }
+    .hero-grid { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
+    .hero-content { flex: 1 1 380px; }
+    .hero-badge {
+      background: rgba(180,140,92,0.15); display: inline-block; padding: 0.4rem 1.2rem;
+      border-radius: 40px; font-size: 0.85rem; color: #f0ddc5; border: 1px solid var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .hero-content h1 { font-size: 3.3rem; font-weight: 320; line-height: 1.2; margin-bottom: 1rem; }
+    .hero-content h1 strong { font-weight: 700; color: var(--accent); }
+    .hero-desc { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin-bottom: 2rem; }
+    .quick-contact { display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; }
+    .phone-hero {
+      display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.06);
+      padding: 0.6rem 1.5rem; border-radius: 60px; border: 1px solid rgba(255,255,255,0.15);
+    }
+    .phone-hero i, .hero-email i { color: var(--accent); }
+    .phone-hero span { font-size: 1.4rem; font-weight: 500; letter-spacing: 0.5px; }
+    .hero-email a { color: white; text-decoration: none; border-bottom: 1px dotted var(--accent); }
+
+    /* section styling */
+    .section-title {
+      font-size: 2.6rem; font-weight: 330; color: var(--primary); margin-bottom: 0.3rem;
+    }
+    .section-title span { font-weight: 700; color: var(--accent); }
+    .title-underline {
+      width: 110px; height: 3px; background: var(--accent); margin: 1rem 0 2.2rem;
+    }
+
+    /* team cards with images (profile1.jpg .. profile5.jpg) */
+    .team-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: 2rem;
+      margin: 3rem 0;
+    }
+    .team-card {
+      background: var(--white); border-radius: 28px; padding: 1.8rem 1.2rem 1.8rem;
+      box-shadow: var(--shadow-sm); transition: all 0.25s; text-align: center;
+      border: 1px solid #eef2f6;
+    }
+    .team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+    .team-img {
+      width: 130px; height: 130px; border-radius: 50%; margin: 0 auto 1.2rem;
+      background-size: cover; background-position: top; background-repeat: no-repeat;
+      border: 4px solid var(--accent); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    /* each profile image - using local placeholder (you'll replace files) */
+    .img-john { background-image: url('profile1.jpg'); }
+    .img-zara { background-image: url('profile2.jpg'); }
+    .img-alistair { background-image: url('profile3.jpg'); }
+    .img-maya { background-image: url('profile4.jpg'); }
+    .img-oliver { background-image: url('profile5.jpg'); }   /* fifth member added */
+
+    .team-card h4 { font-size: 1.5rem; color: var(--primary); margin-top: 0.2rem; }
+    .team-card .role { color: var(--accent); font-weight: 600; margin: 0.2rem 0 0.5rem; }
+    .team-card p { font-size: 0.9rem; color: #3f5468; }
+
+    /* quotes from great people */
+    .quote-bar {
+      background: var(--light); border-radius: 50px; padding: 1.8rem 2.5rem;
+      margin: 3rem 0; border-left: 8px solid var(--accent); font-size: 1.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .quote-author { margin-top: 0.5rem; font-weight: 600; color: var(--primary); }
+
+    /* cases + working days grid */
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 2rem;
+      margin: 3rem 0;
+    }
+    .info-card {
+      background: var(--white); border-radius: 28px; padding: 2rem 1.5rem;
+      box-shadow: var(--shadow-sm); border: 1px solid #dee7ef;
+    }
+    .info-card i { font-size: 2.2rem; color: var(--accent); margin-bottom: 1rem; }
+    .info-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary); }
+    .badge-new {
+      background: #b48c5c20; color: var(--accent); font-weight: 600; padding: 0.2rem 0.8rem;
+      border-radius: 60px; display: inline-block; font-size: 0.8rem; border: 1px solid var(--accent);
+    }
+    .working-day {
+      display: flex; justify-content: space-between; border-bottom: 1px dashed #cbd5e1;
+      padding: 0.5rem 0;
+    }
+
+    /* contact & advanced */
+    .contact-section {
+      background: var(--white); border-radius: 50px; padding: 3rem;
+      box-shadow: var(--shadow-sm); margin: 4rem 0;
+    }
+    .contact-item { display: flex; gap: 1.2rem; margin: 2rem 0; align-items: center; }
+    .contact-icon {
+      width: 50px; height: 50px; background: rgba(180,140,92,0.12); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.3rem;
+    }
+    .cta-button {
+      background: var(--accent); color: var(--primary); padding: 0.9rem 2.8rem;
+      border-radius: 60px; font-weight: 600; text-decoration: none; display: inline-block;
+      box-shadow: 0 4px 15px rgba(180,140,92,0.4); transition: 0.2s;
+    }
+    .cta-button:hover { background: #9f7b4f; color: white; transform: scale(1.02); }
+
+    /* footer */
+    .footer {
+      background: var(--primary); color: #cbd5e1; padding: 2.5rem 0; margin-top: 4rem;
+      border-top: 5px solid var(--accent);
+    }
+    .footer a { color: #f0f0f0; text-decoration: none; }
+    .footer a:hover { color: var(--accent); }
+
+    /* accessibility small */
+    .visually-hidden:not(:focus) { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- navigation -->
+  <nav class="navbar" aria-label="Main">
+    <div class="container nav-container">
+      <div class="logo-area">
+        <i class="fas fa-gavel logo-icon"></i>
+        <div>
+          <div class="logo-text">JOHN <span>WILSON</span></div>
+          <div class="uk-badge"><i class="fas fa-crown" style="color: #b48c5c;"></i> LONDON · SINCE 1987</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#" aria-current="page">Home</a>
+        <a href="#team">Team</a>
+        <a href="#updates">Updates</a>
+        <a href="#quotes">Wisdom</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- hero with UK details -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-scale-balanced"></i> FULL SERVICE · EVERY MATTER</div>
+        <h1>Generations of <strong>counsel</strong>.<br> One firm.</h1>
+        <p class="hero-desc">From youth advocates to silk‑lined experience — we hold your hand through every legal chapter.</p>
+        <div class="quick-contact">
+          <div class="phone-hero"><i class="fas fa-phone-alt"></i><span>020 7946 0187</span></div>
+          <div class="hero-email"><i class="fas fa-envelope"></i> <a href="mailto:johnwilson@johnwilsoncorp.com">johnwilson@johnwilsoncorp.com</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main" class="container">
+
+    <!-- TEAM with profile images (1-5) -->
+    <section id="team" aria-labelledby="team-heading">
+      <h2 id="team-heading" class="section-title">The <span>practice</span> · lawyers</h2>
+      <div class="title-underline"></div>
+      <div class="team-grid">
+        <!-- profile1.jpg : John Wilson -->
+        <div class="team-card"><div class="team-img img-john" role="img" aria-label="John Wilson portrait"></div><h4>John Wilson</h4><div class="role">Senior partner, 42 yrs</div><p>“Law is common sense + precedent.”  Called to Bar 1983.</p></div>
+        <!-- profile2.jpg : Zara Khan -->
+        <div class="team-card"><div class="team-img img-zara" role="img" aria-label="Zara Khan"></div><h4>Zara Khan</h4><div class="role">Partner, commercial</div><p>Legal Week Rising Star 2012 · tech & finance disputes.</p></div>
+        <!-- profile3.jpg : Alistair Finch -->
+        <div class="team-card"><div class="team-img img-alistair" role="img" aria-label="Alistair Finch"></div><h4>Alistair Finch</h4><div class="role">Consultant, ex-High Court</div><p>Mediator & ADR specialist.  “Settlement is an art.”</p></div>
+        <!-- profile4.jpg : Maya Patel -->
+        <div class="team-card"><div class="team-img img-maya" role="img" aria-label="Maya Patel"></div><h4>Maya Patel</h4><div class="role">Solicitor, innovation</div><p>Heads pro bono & digital access.  Young legal aid hero.</p></div>
+        <!-- profile5.jpg : Oliver Shaw (young lawyer) -->
+        <div class="team-card"><div class="team-img img-oliver" role="img" aria-label="Oliver Shaw"></div><h4>Oliver Shaw</h4><div class="role">Junior associate</div><p>Private client & wills.  “Every family has a story.”</p></div>
+      </div>
+    </section>
+
+    <!-- inspirational quote from historical figure -->
+    <section id="quotes" class="quote-bar">
+      <i class="fas fa-quote-left" style="color: var(--accent); font-size: 2rem; margin-right: 1rem; float: left;"></i>
+      <p style="font-weight: 300;">“The first thing we do, let's kill all the lawyers” — but only because they defend liberty.  <span style="font-weight: 400;">(Shakespeare, Henry VI, adapted)</span></p>
+      <div class="quote-author">— Lord Bingham, “The Rule of Law”</div>
+    </section>
+
+    <!-- ADVANCED INFO: cases last updated December + working days + current time -->
+    <section id="updates" aria-labelledby="update-heading">
+      <h2 id="update-heading" class="section-title">Live <span>updates</span> & office</h2>
+      <div class="title-underline"></div>
+
+      <div class="info-grid">
+        <!-- working days & hours card -->
+        <div class="info-card">
+          <i class="fas fa-calendar-alt"></i>
+          <h3>working week</h3>
+          <div class="working-day"><span>Monday</span> <span>9:00 – 19:00</span></div>
+          <div class="working-day"><span>Tuesday</span> <span>9:00 – 19:00</span></div>
+          <div class="working-day"><span>Wednesday</span> <span>9:00 – 19:00</span></div>
+          <div class="working-day"><span>Thursday</span> <span>9:00 – 20:00 (late)</span></div>
+          <div class="working-day"><span>Friday</span> <span>9:00 – 18:00</span></div>
+          <div class="working-day"><span>Saturday</span> <span>10:00 – 14:00 (urgent only)</span></div>
+          <div style="margin-top: 1rem;"><i class="fas fa-clock" style="color: var(--accent);"></i> <span id="current-time"></span> (UK local)</div>
+        </div>
+
+        <!-- recent cases / december update -->
+        <div class="info-card">
+          <i class="fas fa-briefcase"></i>
+          <h3>recent wins <span class="badge-new">updated dec 2012</span></h3>
+          <ul style="list-style: none; margin-top: 1rem;">
+            <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> <strong>R v Davies (fraud)</strong> — acquitted Dec 2012</li>
+            <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> <strong>Patel v NHS trust</strong> — settlement £2.1M Dec 2012</li>
+            <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> <strong>Willow estate dispute</strong> — probate granted Dec 2012</li>
+            <li><i class="fas fa-hourglass-half"></i> <strong>ongoing:</strong> judicial review (immigration)</li>
+          </ul>
+        </div>
+
+        <!-- additional advanced: historical quotes and legal principle -->
+        <div class="info-card">
+          <i class="fas fa-scale-balanced"></i>
+          <h3>great words</h3>
+          <p>“It is not wisdom but Authority that makes a law.” <br>— Thomas Hobbes</p>
+          <p style="margin-top: 0.8rem;">“Where law ends, tyranny begins.” — John Locke</p>
+          <p style="margin-top: 0.8rem;">“Equality before the law” — Magna Carta 1215</p>
+        </div>
+
+        <!-- emergency / random uk info -->
+        <div class="info-card">
+          <i class="fas fa-gavel"></i>
+          <h3>24h emergency</h3>
+          <p><i class="fas fa-phone"></i> 07889 126543 (duty solicitor)</p>
+          <p><i class="fas fa-envelope"></i> emergency@johnwilson.law (encrypted)</p>
+          <p style="margin-top:1rem;">📍 Bedord Row, London WC1R · fully accessible</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- another powerful quote -->
+    <div class="quote-bar" style="margin: 2rem 0;">
+      <i class="fas fa-quote-right" style="color: var(--accent); font-size: 2rem; margin-right: 1rem; float: right;"></i>
+      <p>“The safety of the people shall be the highest law.” — Marcus Tullius Cicero</p>
+    </div>
+
+    <!-- contact section (with email, phone, address) -->
+    <section id="contact" class="contact-section" aria-labelledby="contact-head">
+      <h2 id="contact-head" class="visually-hidden">Contact information</h2>
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+        <h3 style="font-size: 2rem; font-weight: 350; color: var(--primary);">Speak <span style="font-weight:700; color:var(--accent);">directly</span></h3>
+        <a href="mailto:johnwilson@johnwilsoncorp.com" class="cta-button"><i class="fas fa-paper-plane"></i> email now</a>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 3rem; margin-top: 2rem;">
+        <div>
+          <div class="contact-item"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><div><strong>Main line</strong><br>020 7946 0187 (London)</div></div>
+          <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><strong>Email</strong><br><a href="mailto:johnwilson@johnwilsoncorp.com">johnwilson@johnwilsoncorp.com</a></div></div>
+          <div class="contact-item"><div class="contact-icon"><i class="fas fa-location-dot"></i></div><div><strong>Chambers</strong><br>43 Bedford Row, London WC1R 4LL</div></div>
+          <div class="contact-item"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><strong>Out of hours</strong><br>07889 126543 (24/7)</div></div>
+        </div>
+        <div style="flex: 1; background: #e4eef9; border-radius: 40px; padding: 2rem; text-align: center; border: 2px dashed var(--accent);">
+          <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--accent);"></i>
+          <p style="margin: 1rem 0;">Nearest tube: Chancery Lane · Video consultations for all UK.</p>
+          <p><i class="fas fa-wheelchair"></i> full access · BSL interpreters upon request</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer with current year and details -->
+  <footer class="footer">
+    <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+      <div><i class="fas fa-copyright"></i> 2012 John Wilson Law Firm (UK) <br> SRA 648292 · Registered in England and Wales</div>
+      <div style="font-size: 1.4rem;"><i class="fas fa-phone-alt" style="color: var(--accent);"></i> 020 7946 0187</div>
+      <div><a href="#"><i class="fab fa-linkedin"></i></a> <a href="#"><i class="fab fa-x-twitter"></i></a> <a href="mailto:johnwilson@johnwilsoncorp.com"><i class="fas fa-envelope"></i></a></div>
+    </div>
+    <div class="container" style="margin-top: 2rem; font-size:0.9rem; border-top: 1px solid #224c72; padding-top:1.5rem; text-align: center;">
+      <i class="fas fa-universal-access"></i>  accessible toilets · hearing loop · language interpretation
+    </div>
+  </footer>
+
+  <!-- live current time update (UK) -->
+  <script>
+    (function updateTime() {
+      const timeEl = document.getElementById('current-time');
+      if (timeEl) {
+        const now = new Date();
+        const ukTime = now.toLocaleString('en-GB', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+        timeEl.textContent = ukTime;
+      }
+      setTimeout(updateTime, 1000);
+    })();
+
+    // set last updated stamp dynamically (dec 2012)
+    const badges = document.querySelectorAll('.badge-new');
+    badges.forEach(b => { b.textContent = 'updated dec 2012'; });
+  </script>
+  <!-- back to top link -->
+  <a href="#" aria-label="back to top" style="position: fixed; bottom: 2rem; right: 2rem; background: var(--primary); color: white; padding: 0.8rem 1.2rem; border-radius: 60px; border: 1px solid var(--accent); box-shadow: var(--shadow-md);"><i class="fas fa-arrow-up"></i> top</a>
+</body>
+</html>
